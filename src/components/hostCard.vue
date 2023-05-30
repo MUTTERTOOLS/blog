@@ -5,7 +5,7 @@
       <li>
         <el-avatar
           :size="100"
-          src="/img/avatar.jpg"
+          :src="`${window.path}img/avatar.jpg`"
           data-theme="dark"
         />
       </li>

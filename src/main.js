@@ -6,7 +6,6 @@ import { createRouter, createWebHashHistory } from 'vue-router';
 import '@/assets/styles/tailwind.css';
 import '@/assets/styles/common.css';
 import 'element-plus/dist/index.css';
-// import 'vditor/dist/index.css';
 
 import ElementPlus from 'element-plus';
 import App from '@/app.vue';
@@ -17,11 +16,9 @@ const router = createRouter({
   routes,
 });
 
-const app = createApp(App);
+window.path = import.meta.env.MODE === 'production' ? '/' : '/pictures/';
 
-// app.config.globalProperties.$path = import;
-window.$path = '/pictures/';
-// window.console.log(import.meta);
+const app = createApp(App);
 
 app.use(router)
   .use(ElementPlus);
