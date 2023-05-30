@@ -4,14 +4,14 @@ import eslint from 'vite-plugin-eslint';
 import stylelint from 'vite-plugin-stylelint';
 import svgLoader from 'vite-svg-loader';
 import { resolve } from 'path';
-// import { Plugin as importToCDN } from 'vite-plugin-cdn-import';
 
 export default ({ mode }) => {
   process.env = { ...process.env, ...loadEnv(mode, process.cwd()) };
 
   return defineConfig({
-    publicDir: process.env.NODE_ENV !== 'development' ? '/pictures/' : '/',
-    base: process.env.VITE_BASE_PUBLIC_PATH,
+    // publicDir: process.env.NODE_ENV !== 'development' ? '/pictures/' : '/',
+    // publicDir: '123',
+    base: process.env.NODE_ENV !== 'development' ? '/pictures/' : '/',
     plugins: [
       vue(),
       // importToCDN({
