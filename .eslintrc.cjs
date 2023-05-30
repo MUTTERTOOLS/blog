@@ -28,6 +28,7 @@ module.exports = {
     }],
     'vue/multi-word-component-names': 'off',
     'tailwindcss/no-custom-classname': 'off',
+    'linebreak-style': 'off',
   },
   settings: {
     'import/resolver': {
