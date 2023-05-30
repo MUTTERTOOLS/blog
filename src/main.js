@@ -1,0 +1,23 @@
+import { createApp } from 'vue';
+import { createRouter, createWebHistory } from 'vue-router';
+// import '@/assets/styles/fonts.css';
+// import '@/assets/styles/main.css';
+// 样式
+import '@/assets/styles/tailwind.css';
+import '@/assets/styles/common.css';
+import 'element-plus/dist/index.css';
+// import 'vditor/dist/index.css';
+
+import ElementPlus from 'element-plus';
+import App from '@/app.vue';
+import { routes } from '@/routes.js';
+
+const router = createRouter({
+  history: createWebHistory(import.meta.env.VITE_BASE_PUBLIC_PATH),
+  routes,
+});
+
+const app = createApp(App);
+app.use(router)
+  .use(ElementPlus);
+app.mount('#app');

@@ -1,0 +1,118 @@
+{
+  "css.validate": false,
+  "editor.defaultFormatter": "esbenp.prettier-vscode",
+  // "editor.formatOnSave": true, // 需要的话启用它,建议禁用
+  "editor.rulers": [{ "column": 100 }],
+  "editor.tabSize": 2,
+  "editor.wordWrap": "on",
+  "eslint.validate": [
+    "javascript",
+    "javascriptreact",
+    "typescript",
+    "typescriptreact",
+    "vue",
+    "yaml",
+    "json",
+    "jsonc",
+    "json5"
+  ],
+  "files.eol": "\n",
+  "files.associations": {
+    "*.wxml": "html",
+    "*.wxs": "javascript",
+    "*.wxss": "css",
+    "*.axml": "html",
+    "*.sjs": "javascript",
+    "*.acss": "css",
+    "*.swan": "html",
+    "*.ttml": "html",
+    "*.ttss": "css",
+    "*.jxml": "html",
+    "*.jxss": "css",
+    "*.wpy": "vue",
+    "*.json": "jsonc",
+    "*.json5": "jsonc",
+    "*.nvue": "vue",
+    "*.uvue": "vue",
+    "*.ux": "vue"
+  },
+  "scss.validate": false,
+  "stylelint.snippet": ["css", "scss", "vue"],
+  "stylelint.validate": ["css", "scss", "vue"],
+  // 需要的话启用它
+  "[html]": {
+    "editor.formatOnSave": true
+  },
+  "[javascript]": {
+    "editor.codeActionsOnSave": {
+      "source.fixAll.eslint": true
+    }
+  },
+  "[javascriptreact]": {
+    "editor.codeActionsOnSave": {
+      "source.fixAll.eslint": true
+    }
+  },
+  "[typescript]": {
+    "editor.codeActionsOnSave": {
+      // "source.fixAll.eslint": true,
+      "source.fixAll": true
+    }
+  },
+  "[typescriptreact]": {
+    "editor.codeActionsOnSave": {
+      "source.fixAll.eslint": true
+    }
+  },
+  "[css]": {
+    "editor.codeActionsOnSave": {
+      // "source.fixAll.stylelint": true
+      "source.fixAll": true
+    }
+  },
+  "[scss]": {
+    "editor.codeActionsOnSave": {
+      "source.fixAll.stylelint": true
+    }
+  },
+  "[vue]": {
+    "editor.codeActionsOnSave": {
+      "source.fixAll.eslint": true,
+      "source.fixAll.stylelint": true
+    }
+  },
+  "[json]": {
+    "editor.codeActionsOnSave": {
+      "source.fixAll.eslint": true
+    }
+  },
+  "[jsonc]": {
+    "editor.codeActionsOnSave": {
+      "source.fixAll.eslint": true
+    }
+  },
+  "[json5]": {
+    "editor.codeActionsOnSave": {
+      "source.fixAll.eslint": true
+    }
+  },
+  "[markdown]": {
+    "editor.formatOnSave": true, // 需要的话启用它
+    "editor.codeActionsOnSave": {
+      "source.fixAll.markdownlint": true
+    }
+  },
+  "[yaml]": {
+    "editor.codeActionsOnSave": {
+      "source.fixAll.eslint": true
+    }
+  },
+  "[yml]": {
+    "editor.codeActionsOnSave": {
+      "source.fixAll.eslint": true
+    }
+  },
+  "[postcss]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  }
+}
