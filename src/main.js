@@ -19,9 +19,9 @@ const router = createRouter({
 
 const app = createApp(App);
 
-// app.config.globalProperties.$path = import.meta.env.PATH;
-// window.$path = import.meta.env.PATH;
-window.console.log(import.meta);
+// app.config.globalProperties.$path = import;
+window.$path = '/pictures/';
+// window.console.log(import.meta);
 
 app.use(router)
   .use(ElementPlus);
