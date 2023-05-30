@@ -70,7 +70,7 @@ const articleList = [{
   update: '更新于 1 个月前',
   series: '中国奇谈',
   tag: 'Vue3',
-  pic: '/img/art3.webp',
+  pic: `${import.meta.env.BASE_URL}img/art3.webp`,
 }];
 
 </script>
