@@ -10,16 +10,32 @@ import 'element-plus/dist/index.css';
 import ElementPlus from 'element-plus';
 import App from '@/app.vue';
 import { routes } from '@/routes.js';
+import { createPinia } from 'pinia';
+
+import globalStore from './pinia.js';
 
 const router = createRouter({
   history: createWebHashHistory(import.meta.env.VITE_BASE_PUBLIC_PATH),
   routes,
 });
 
-window.path = import.meta.env.MODE === 'production' ? '/' : '/pictures/';
-
 const app = createApp(App);
 
+app.config.globalProperties = {
+  path: '/',
+  window: {
+    path: '/',
+  },
+};
+
 app.use(router)
-  .use(ElementPlus);
+  .use(ElementPlus)
+  .use(createPinia());
+
 app.mount('#app');
+
+const store = globalStore();
+window.console.log(store);
+
+// globalThis.path = '/';
+window.console.log(window);

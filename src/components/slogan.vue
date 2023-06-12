@@ -11,17 +11,17 @@
 /* eslint-disable */
 import { onMounted } from 'vue'
 let typed;
-onMounted(() => {
-  typed = new Typed('.typed', {
-    strings: [`Welcome to M.T ^1000 の Tiny Home!🤣🤣🤣`,
-      `Hope you have a nice day!🍭🍭🍭|`],
-    typeSpeed: 50,
-    backSpeed: 60,
-    loop: true,
-    // cursorChar: '🔥',  
-    // cursorChar: '🌈',  
-  });
-})
+// onMounted(() => {
+//   typed = new Typed('.typed', {
+//     strings: [`Welcome to M.T ^1000 の Tiny Home!🤣🤣🤣`,
+//       `Hope you have a nice day!🍭🍭🍭|`],
+//     typeSpeed: 50,
+//     backSpeed: 60,
+//     loop: true,
+//     // cursorChar: '🔥',  
+//     // cursorChar: '🌈',  
+//   });
+// })
 </script>
 
 <style>

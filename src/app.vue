@@ -22,10 +22,6 @@ import navbar from './components/navbar.vue';
   background-repeat: no-repeat;
   background-position: center;
   background-size: cover;
-
-  /* background-clip: ; */
-
-  /* inset: 0; */
 }
 
 .bg-pic::before {
