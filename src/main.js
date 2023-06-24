@@ -15,7 +15,7 @@ import { createPinia } from 'pinia';
 import globalStore from './pinia.js';
 
 const router = createRouter({
-  history: createWebHashHistory(import.meta.env.VITE_BASE_PUBLIC_PATH),
+  history: createWebHashHistory(),
   routes,
 });
 

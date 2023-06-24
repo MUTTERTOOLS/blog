@@ -53,7 +53,7 @@ const articleList = [{
   update: '更新于 1 个月前',
   series: '中国奇谈',
   tag: 'Vue3',
-  pic: `${window.path}img/art1.webp`,
+  pic: '/img/art1.webp',
 },
 {
   slogan: '🍈妖怪，也是童年的一种寄托',
@@ -62,7 +62,7 @@ const articleList = [{
   update: '更新于 1 个月前',
   series: '中国奇谈',
   tag: 'Vue3',
-  pic: `${window.path}img/art2.webp`,
+  pic: '/img/art2.webp',
 }, {
   slogan: '🍈妖怪，也是童年的一种寄托',
   title: '中国奇谈 | 乡村巴士带走了王孩儿和神仙',
@@ -70,7 +70,7 @@ const articleList = [{
   update: '更新于 1 个月前',
   series: '中国奇谈',
   tag: 'Vue3',
-  pic: `${window.path}img/art3.webp`,
+  pic: '/img/art3.webp',
 }];
 
 </script>

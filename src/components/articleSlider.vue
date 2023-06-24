@@ -56,25 +56,25 @@ const articles = [{
   date: '2023-4-10',
   desc: '页面渲染优化前，首先需要搞清楚浏览器的渲染原理，然后主要是在代码层面进行优化。我分了3个部分：优化html代码，优化js和css代码，优化动画效果。',
   href: '/article',
-  pic: `${window.path}img/slider1.webp`,
+  pic: '/img/slider1.webp',
 }, {
   title: '浏览器渲染机制',
   date: '2023-4-10',
   desc: '页面渲染优化前，首先需要搞清楚浏览器的渲染原理，然后主要是在代码层面进行优化。我分了3个部分：优化html代码，优化js和css代码，优化动画效果。',
   href: '/article',
-  pic: `${window.path}img/slider2.webp`,
+  pic: '/img/slider2.webp',
 }, {
   title: '浏览器渲染机制',
   date: '2023-4-10',
   desc: '页面渲染优化前，首先需要搞清楚浏览器的渲染原理，然后主要是在代码层面进行优化。我分了3个部分：优化html代码，优化js和css代码，优化动画效果。',
   href: '/article',
-  pic: `${window.path}img/slider3.webp`,
+  pic: '/img/slider3.webp',
 }, {
   title: '浏览器渲染机制',
   date: '2023-4-10',
   desc: '页面渲染优化前，首先需要搞清楚浏览器的渲染原理，然后主要是在代码层面进行优化。我分了3个部分：优化html代码，优化js和css代码，优化动画效果。',
   href: '/article',
-  pic: `${window.path}img/slider4.webp`,
+  pic: '/img/slider4.webp',
 }];
 </script>
 
