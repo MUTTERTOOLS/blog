@@ -1,13 +1,15 @@
 <template>
-  <el-affix
-    :offset="0"
-    style="position: absolute; width: 100%; height: 0;"
+  <div
+    style="position: fixed;top: 0;width: 100%;"
   >
     <div id="navbar">
       <!-- 网站名 -->
-      <div id="website">
-        JUST BLOG🚀
-      </div>
+      <a
+        id="website"
+        href="/"
+      >
+        BLOG🚀
+      </a>
 
       <!-- 网站导航 -->
       <!-- <ul id="nav">
@@ -19,19 +21,42 @@
       <!-- 网站设置 -->
       <div class="w-40">
         <ul class="flex">
-          <!-- <li>123</li> -->
           <li><switchMode /></li>
+          <li>
+            <setting v-if="showWinbox" />
+            <svg
+              @click="showWinbox = !showWinbox"
+            ><image
+              href="/img/设置.svg"
+              width="30"
+              height="30"
+            />
+            </svg>
+          </li>
         </ul>
       </div>
     </div>
-  </el-affix>
+  </div>
 </template>
 
 <script setup lang='ts'>
 import switchMode from '@/composables/switchMode.vue';
+import { ref } from 'vue';
+import setting from './setting.vue';
+
+const showWinbox = ref(false);
 </script>
 
-<style>
+<style scoped>
+a {
+  color: white;
+  text-decoration: none;
+}
+
+li {
+  margin: 0 10px;
+}
+
 #navbar {
   position: relative;
   top: 0;
@@ -57,4 +82,5 @@ import switchMode from '@/composables/switchMode.vue';
 
   /* justify-self: center; */
 }
+
 </style>

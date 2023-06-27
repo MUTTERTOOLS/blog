@@ -33,6 +33,8 @@
     <br>
     <br>
     <div class="clear-both" />
+    <br>
+    <conduction />
     <br><br><br><br><br>
     <!-- 底部版权 -->
     <footBar />
@@ -45,6 +47,7 @@ import articleSlider from '@/components/articleSlider.vue';
 import articleCard from '@/components/articleCard.vue';
 import hostCard from '@/components/hostCard.vue';
 import footBar from '@/components/footBar.vue';
+import conduction from '@/components/conduction.vue';
 
 const articleList = [{
   slogan: '🍈妖怪，也是童年的一种寄托',
@@ -72,7 +75,6 @@ const articleList = [{
   tag: 'Vue3',
   pic: '/img/art3.webp',
 }];
-
 </script>
 
 <style>

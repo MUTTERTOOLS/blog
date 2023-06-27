@@ -1,6 +1,5 @@
 <template>
   <svg
-    aria-hidden="true"
     style="position:absolute; width:0; height:0; overflow:hidden"
   ><symbol
     id="icon-sun"
@@ -39,8 +38,8 @@
     title="切换日间/夜间模式"
     @click="switchNightMode()"
   ><svg
-    width="48"
-    height="48"
+    width="30"
+    height="30"
     viewBox="0 0 1024 1024"
   ><use
     id="modeicon"
@@ -220,8 +219,11 @@ function switchNightModeTop() {
   /* position: absolute;
   right: 1px;
   bottom: 0; */
-  width: 22px;
-  height: 22px;
-  margin: auto;
+
+  /* width: 22px; */
+
+  /* height: 22px; */
+
+  /* margin: auto; */
 }
 </style>
