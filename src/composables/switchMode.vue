@@ -36,97 +36,49 @@
   <a
     class="icon-V"
     title="切换日间/夜间模式"
-    @click="switchNightMode()"
+    @click="light = !light"
   ><svg
     width="30"
     height="30"
     viewBox="0 0 1024 1024"
   ><use
     id="modeicon"
-    xlink:href="#icon-moon"
+    :xlink:href="light ? '#icon-sun' : '#icon-moon'"
   /></svg>
   </a>
+
+  <div
+    v-if="visible"
+    class="absolute h-0 w-0"
+  >
+    <span :class="[light ? 'light' : 'dark']">
+      <div
+        class="Cuteen_DarkSky"
+        style="width: 100vw;height: 100vh;"
+      >
+        <div :class="visible ? 'Cuteen_DarkPlanet' : ''" />
+      </div>
+    </span>
+  </div>
 </template>
 
 <script setup>
-/* eslint-disable */
-function checkNightMode() {
-  localStorage.getItem('isDark') === '1'
-    ? ($('body').addClass('DarkMode'),
-    $('#changeMode-top').removeClass('fa-moon').addClass('fa-sun'),
-    $('#modeicon').attr('xlink:href', '#icon-sun'))
-    : localStorage.getItem('isDark') === '0'
-      ? $('#modeicon').attr('xlink:href', '#icon-moon')
-      : new Date().getHours() >= 20 || new Date().getHours() < 7
-        ? ($('body').addClass('DarkMode'),
-        $('#changeMode-top').removeClass('fa-moon').addClass('fa-sun'),
-        $('#modeicon').attr('xlink:href', '#icon-sun'))
-        : matchMedia('(prefers-color-scheme: dark)').matches
-          ? ($('body').addClass('DarkMode'),
-          $('#changeMode-top').removeClass('fa-moon').addClass('fa-sun'),
-          $('#modeicon').attr('xlink:href', '#icon-sun'))
-          : $('#modeicon').attr('xlink:href', '#icon-moon');
-}
-function switchNightMode() {
-  $(
-    '<div class="Cuteen_DarkSky"><div class="Cuteen_DarkPlanet"></div></div>',
-  ).appendTo($('body')),
+import { ref, watch } from 'vue';
+
+const light = ref(true);
+const visible = ref(false);
+
+watch(light, () => {
+  visible.value = true;
   setTimeout(() => {
-    $('body').hasClass('DarkMode')
-      ? ($('body').removeClass('DarkMode'),
-      localStorage.setItem('isDark', '0'),
-      $('#changeMode-top').removeClass('fa-sun').addClass('fa-moon'),
-      $('#modeicon').attr('xlink:href', '#icon-moon'))
-      : ($('body').addClass('DarkMode'),
-      localStorage.setItem('isDark', '1'),
-      $('#changeMode-top').removeClass('fa-moon').addClass('fa-sun'),
-      $('#modeicon').attr('xlink:href', '#icon-sun')),
-    setTimeout(() => {
-      $('.Cuteen_DarkSky').fadeOut(1e3, function () {
-        $(this).remove();
-      });
-    }, 2e3);
-  });
-  const nowMode = document.documentElement.getAttribute('data-theme') === 'dark'
-    ? 'dark'
-    : 'light';
-  if (nowMode === 'light') {
-    // activateDarkMode();
-    // saveToLocal.set('theme', 'dark', 2);
-    // GLOBAL_CONFIG.Snackbar !== undefined
-    //   && btf.snackbarShow(GLOBAL_CONFIG.Snackbar.day_to_night);
-    $('#modeicon').attr('xlink:href', '#icon-moon');
-  } else {
-    // activateLightMode();
-    // saveToLocal.set('theme', 'light', 2);
-    // GLOBAL_CONFIG.Snackbar !== undefined
-    //   && btf.snackbarShow(GLOBAL_CONFIG.Snackbar.night_to_day);
-    $('body').addClass('DarkMode'),
-    $('#changeMode-top').removeClass('fa-moon').addClass('fa-sun'),
-    $('#modeicon').attr('xlink:href', '#icon-sun');
-  }
-  // handle some cases
-  typeof utterancesTheme === 'function' && utterancesTheme();
-  typeof FB === 'object' && window.loadFBComment();
-  window.DISQUS
-    && document.getElementById('disqus_thread').children.length
-    && setTimeout(() => window.disqusReset(), 200);
-}
-function switchNightModeTop() {
-  $('body').hasClass('DarkMode')
-    ? ($('body').removeClass('DarkMode'),
-    localStorage.setItem('isDark', '0'),
-    $('#changeMode-top').removeClass('fa-sun').addClass('fa-moon'),
-    $('#modeicon').attr('xlink:href', '#icon-moon'))
-    : ($('body').addClass('DarkMode'),
-    localStorage.setItem('isDark', '1'),
-    $('#changeMode-top').removeClass('fa-moon').addClass('fa-sun'),
-    $('#modeicon').attr('xlink:href', '#icon-sun'));
-}
-// switchNightMode()
+    visible.value = false;
+  }, 2e3);
+});
+
 </script>
 
 <style>
+
 .Cuteen_DarkSky,
 .Cuteen_DarkSky::before {
   position: fixed;
@@ -139,17 +91,32 @@ function switchNightModeTop() {
 }
 
 .Cuteen_DarkSky {
-  background: linear-gradient(#feb8b0, #fef9db);
+  background: var(--from);
 }
 
 .Cuteen_DarkSky::before {
-  background: linear-gradient(#4c3f6d, #6c62bb, #93b1ed);
-  opacity: 0;
-  transition: 2s ease all;
+  background: var(--to);
+  animation: CuteenDarkSkyChange 2s linear;
 }
 
-.DarkMode .Cuteen_DarkSky::before {
-  opacity: 1;
+.light {
+  --from: linear-gradient(#4c3f6d, #6c62bb, #93b1ed);
+  --to: linear-gradient(#feb8b0, #fef9db);
+}
+
+.dark {
+  --from: linear-gradient(#feb8b0, #fef9db);
+  --to: linear-gradient(#4c3f6d, #6c62bb, #93b1ed);
+}
+
+@keyframes CuteenDarkSkyChange {
+  0% {
+    opacity: 0;
+  }
+
+  100% {
+    opacity: 1;
+  }
 }
 
 .Cuteen_DarkPlanet {
@@ -173,16 +140,6 @@ function switchNightModeTop() {
   }
 }
 
-@keyframes CuteenPlanetMove {
-  0% {
-    transform: rotate(0);
-  }
-
-  100% {
-    transform: rotate(360deg);
-  }
-}
-
 .Cuteen_DarkPlanet::after {
   position: absolute;
   top: 40%;
@@ -192,14 +149,6 @@ function switchNightModeTop() {
   background: linear-gradient(#fefefe, #fffbe8);
   border-radius: 50%;
   content: "";
-}
-
-.search span {
-  display: none;
-}
-
-.menus_item a {
-  text-decoration: none !important;
 }
 
 /* 深色模式按钮 */
@@ -213,17 +162,5 @@ function switchNightModeTop() {
   overflow: hidden;
   border-radius: 6px;
   transition: 1.3s cubic-bezier(0.53, 0, 0.15, 1.3);
-}
-
-.icon-V svg {
-  /* position: absolute;
-  right: 1px;
-  bottom: 0; */
-
-  /* width: 22px; */
-
-  /* height: 22px; */
-
-  /* margin: auto; */
 }
 </style>
