@@ -6,7 +6,7 @@
 
 <script setup lang='ts'>
 import VueWinBox from 'vue-winbox';
-import { ref, onMounted, defineProps } from 'vue';
+import { ref, onMounted } from 'vue';
 
 const props = defineProps({
   title: {
@@ -18,6 +18,7 @@ const props = defineProps({
 const winBox = ref();
 onMounted(() => {
   winBox.value.winbox.setTitle(props.title);
+  winBox.value.winbox.resize('70%', '80%');
   winBox.value.winbox.move('center', 'center');
 });
 </script>

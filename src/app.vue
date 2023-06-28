@@ -1,15 +1,20 @@
 <template>
   <div style="position: relative;">
-    <div class="bg-pic" />
+    <div
+      class="bg-pic"
+      :style="bgStyle"
+    />
     <navbar />
     <router-view />
   </div>
 </template>
 
 <script setup lang="ts">
-
-// 组件
+import backgroundController from '@/controllers/backgroundController';
 import navbar from './components/navbar.vue';
+
+const bgStyle = backgroundController.getBackgroundStyle();
+window.console.log(bgStyle);
 </script>
 
 <style>
@@ -19,10 +24,6 @@ import navbar from './components/navbar.vue';
   z-index: -999;
   width: 100vw;
   height: 100vh;
-  background-image: url('/img/bg1.webp');
-  background-repeat: no-repeat;
-  background-position: center;
-  background-size: cover;
 }
 
 .bg-pic::before {
