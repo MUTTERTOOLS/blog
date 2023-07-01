@@ -1,3 +1,7 @@
+declare const tsParticles: any;
+declare const loadStarsPreset: Function;
+declare const loadFirePreset: Function;
+
 interface BackgroundAnimation {
   play(): any;
   stop(): any;
@@ -6,27 +10,26 @@ interface BackgroundAnimation {
 class ParticlesAnimation implements BackgroundAnimation {
   tsparticles: any; // 粒子动画实例
 
-  constructor(private playFn: () => any, src: string) {
-    const script = document.createElement('script');
-    script.src = src;
-    script.onload = () => {
-      this.tsparticles = playFn();
-    };
-    document.body.append(script);
-  }
+  constructor(private playFn: () => any, private src: string) {}
 
   stop() {
     this.tsparticles.destroy();
   }
 
   play() {
-    return this.playFn();
+    const script = document.createElement('script');
+    script.src = this.src;
+    script.onload = () => {
+      this.tsparticles = this.playFn();
+    };
+    document.body.append(script);
   }
 }
 
 const starAni = new ParticlesAnimation(async () => {
   await loadStarsPreset(tsParticles);
   await tsParticles.load('tsparticles', {
+    fpsLimit: 90,
     background: {
       color: {
         value: 'transparent',
@@ -39,6 +42,7 @@ const starAni = new ParticlesAnimation(async () => {
 const fireAni = new ParticlesAnimation(async () => {
   await loadFirePreset(tsParticles);
   await tsParticles.load('tsparticles', {
+    fpsLimit: 90,
     background: {
       color: {
         value: 'transparent',
@@ -71,7 +75,7 @@ class BackgroundAniController {
   }
 }
 
-export default new BackgroundAniController(starAni);
+export const backgroundAniController = new BackgroundAniController(starAni);
 export const aniList = [
   { name: '星星', animation: starAni },
   { name: '火星', animation: fireAni },

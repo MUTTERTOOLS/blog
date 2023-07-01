@@ -28,6 +28,9 @@ module.exports = {
     'tailwindcss/no-custom-classname': 'off',
     'linebreak-style': 'off',
     'max-classes-per-file': 'off',
+    'no-useless-constructor': 'off',
+    'no-unused-vars': 'off',
+    'no-empty-function': 'off',
   },
   settings: {
     'import/resolver': {

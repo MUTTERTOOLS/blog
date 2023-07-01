@@ -3,64 +3,82 @@
     <div
       class="w-full px-10 py-4"
     >
-      <el-collapse
-        v-model="activeName"
-        accordion
-      >
-        <el-collapse-item
-          title="切换 二次元 背景图片"
-          name="1"
-          class="w-full"
+      <div>
+        <h3>动效切换⌛</h3>
+        <div class="flex w-full">
+          <label
+            v-for="i in animationList"
+            :key="i.name"
+            :for="i.name"
+          >{{ i.name }}：<el-switch
+            :id="i.name"
+            v-model="i.switch"
+            @change="i.changeFn"
+          /></label>
+        </div>
+      </div>
+      <div>
+        <h3>背景切换⌛</h3>
+        <el-collapse
+          v-model="activeName"
+          accordion
         >
-          <div class="flex w-full flex-wrap justify-around">
-            <div
-              v-for="(i) in lightBgImgList"
-              :key="i"
-              class="pic"
-              :style="`background-image: url(${i})`"
-              @click="backgroundController.setBackgroundImg(i)"
-            />
-          </div>
-        </el-collapse-item>
-        <el-collapse-item
-          title="切换 风景 背景图片"
-          name="2"
-          class="w-full"
-        >
-          <div class="flex w-full flex-wrap justify-around">
-            <div
-              v-for="(i) in darkBgImgList"
-              :key="i"
-              class="pic"
-              :style="`background-image: url(${i})`"
-              @click="backgroundController.setBackgroundImg(i)"
-            />
-          </div>
-        </el-collapse-item>
-        <el-collapse-item
-          title="切换 渐变色 背景"
-          name="3"
-          class="w-full"
-        >
-          <div class="flex w-full flex-wrap justify-around">
-            <div
-              v-for="(i) in linearGradient"
-              :key="i"
-              class="pic"
-              :style="`background-image: ${i}`"
-              @click="backgroundController.setBackgroundImg(i)"
-            />
-          </div>
-        </el-collapse-item>
-      </el-collapse>
+          <el-collapse-item
+            title="切换 二次元 背景图片"
+            name="1"
+            class="w-full"
+          >
+            <div class="flex w-full flex-wrap justify-around">
+              <div
+                v-for="(i) in lightBgImgList"
+                :key="i"
+                class="pic"
+                :style="`background-image: url(${i})`"
+                @click="backgroundController.setBackgroundImg(i)"
+              />
+            </div>
+          </el-collapse-item>
+          <el-collapse-item
+            title="切换 风景 背景图片"
+            name="2"
+            class="w-full"
+          >
+            <div class="flex w-full flex-wrap justify-around">
+              <div
+                v-for="(i) in darkBgImgList"
+                :key="i"
+                class="pic"
+                :style="`background-image: url(${i})`"
+                @click="backgroundController.setBackgroundImg(i)"
+              />
+            </div>
+          </el-collapse-item>
+          <el-collapse-item
+            title="切换 渐变色 背景"
+            name="3"
+            class="w-full"
+          >
+            <div class="flex w-full flex-wrap justify-around">
+              <div
+                v-for="(i) in linearGradient"
+                :key="i"
+                class="pic"
+                :style="`background-image: ${i}`"
+                @click="backgroundController.setBackgroundImg(i)"
+              />
+            </div>
+          </el-collapse-item>
+        </el-collapse>
+      </div>
     </div>
   </winbox>
 </template>
 
 <script setup lang='ts'>
 import winbox from '@/composables/winbox.vue';
-import { ref } from 'vue';
+import { ref, reactive } from 'vue';
 import backgroundController from '@/controllers/backgroundController';
+import { aniList, backgroundAniController } from '@/controllers/backgroundAniController';
 
 const activeName = ref('1');
 
@@ -90,6 +108,17 @@ const linearGradient = ref([
   'linear-gradient(to top, #8360c3, #2ebf91)',
   'linear-gradient(to top, #8360c3, #2ebf91)',
 ]);
+
+// 动效切换
+const animationList = reactive(aniList.map((i) => ({
+  name: i.name,
+  changeFn(flag: boolean) {
+    // eslint-disable-next-line no-unused-expressions
+    flag && backgroundAniController.toggle(i.animation);
+  },
+  switch: false,
+})));
+
 </script>
 
 <style scoped>
