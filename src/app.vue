@@ -6,15 +6,23 @@
     />
     <navbar />
     <router-view />
+
+    <!-- <Particles
+      id="tsparticles"
+      :particles-init="particlesInit"
+      :options="particlesOptions"
+    /> -->
   </div>
 </template>
 
 <script setup lang="ts">
 import backgroundController from '@/controllers/backgroundController';
 import navbar from './components/navbar.vue';
+// import particlesOptions from './particlesOptions.json';
+
+declare module 'vue3-particles';
 
 const bgStyle = backgroundController.getBackgroundStyle();
-window.console.log(bgStyle);
 </script>
 
 <style>

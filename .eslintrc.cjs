@@ -1,7 +1,4 @@
 module.exports = {
-  // ignorePattern: [
-  //   '**/switchMode.vue',
-  // ],
   // parser: '@typescript-eslint/parser',
   env: {
     browser: true,
@@ -30,6 +27,7 @@ module.exports = {
     'vue/multi-word-component-names': 'off',
     'tailwindcss/no-custom-classname': 'off',
     'linebreak-style': 'off',
+    'max-classes-per-file': 'off',
   },
   settings: {
     'import/resolver': {

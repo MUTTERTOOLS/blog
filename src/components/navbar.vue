@@ -25,6 +25,8 @@
           <li>
             <setting v-if="showWinbox" />
             <svg
+              height="30"
+              width="30"
               @click="showWinbox = !showWinbox"
             ><image
               href="/img/设置.svg"
@@ -71,6 +73,10 @@ li {
   padding: 0;
 }
 
+#navbar li:hover {
+  animation: shake 2s linear;
+}
+
 #website {
   padding: 10px 20px;
   font-size: 24px;
@@ -85,4 +91,17 @@ li {
   /* justify-self: center; */
 }
 
+@keyframes shake {
+  0%, 60% {
+    transform: scale(1.1) rotate(-8deg);
+  }
+
+  30%, 90% {
+    transform: scale(0.9) rotate(8deg);
+  }
+
+  100% {
+    transform: scale(1);
+  }
+}
 </style>

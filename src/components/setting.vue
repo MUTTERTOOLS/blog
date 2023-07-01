@@ -8,16 +8,46 @@
         accordion
       >
         <el-collapse-item
-          title="切换背景图片"
+          title="切换 二次元 背景图片"
           name="1"
           class="w-full"
         >
           <div class="flex w-full flex-wrap justify-around">
             <div
-              v-for="(i) in bgImgList"
+              v-for="(i) in lightBgImgList"
               :key="i"
               class="pic"
               :style="`background-image: url(${i})`"
+              @click="backgroundController.setBackgroundImg(i)"
+            />
+          </div>
+        </el-collapse-item>
+        <el-collapse-item
+          title="切换 风景 背景图片"
+          name="2"
+          class="w-full"
+        >
+          <div class="flex w-full flex-wrap justify-around">
+            <div
+              v-for="(i) in darkBgImgList"
+              :key="i"
+              class="pic"
+              :style="`background-image: url(${i})`"
+              @click="backgroundController.setBackgroundImg(i)"
+            />
+          </div>
+        </el-collapse-item>
+        <el-collapse-item
+          title="切换 渐变色 背景"
+          name="3"
+          class="w-full"
+        >
+          <div class="flex w-full flex-wrap justify-around">
+            <div
+              v-for="(i) in linearGradient"
+              :key="i"
+              class="pic"
+              :style="`background-image: ${i}`"
               @click="backgroundController.setBackgroundImg(i)"
             />
           </div>
@@ -35,12 +65,31 @@ import backgroundController from '@/controllers/backgroundController';
 const activeName = ref('1');
 
 // 自动批量导入背景图片路径
-const bgImgList = ref([]);
-const modules = import.meta.glob('../../public/img/bg/*', { as: 'url' });
-const imgUrls = Object.values(modules).map((fn) => fn());
-Promise.allSettled(imgUrls).then((urls) => {
-  bgImgList.value = urls.map((url) => url.value);
+const lightBgImgList = ref([]);
+const lightBgUrls = Object.values(
+  import.meta.glob('../assets/img/darkBg/*', { as: 'url' }),
+).map((fn: any) => fn());
+Promise.allSettled(lightBgUrls).then((urls) => {
+  lightBgImgList.value = urls.map((url: any) => url.value);
 });
+
+const darkBgImgList = ref([]);
+const darkBgUrls = Object.values(
+  import.meta.glob('../assets/img/darkBg/*', { as: 'url' }),
+).map((fn: any) => fn());
+Promise.allSettled(darkBgUrls).then((urls) => {
+  darkBgImgList.value = urls.map((url: any) => url.value);
+});
+
+// 渐变色背景
+const linearGradient = ref([
+  'linear-gradient(to bottom, #7f7fd5, #86a8e7, #91eae4)',
+  'linear-gradient(to left, #654ea3, #eaafc8)',
+  'linear-gradient(to top, #feac5e, #c779d0, #4bc0c8)',
+  'linear-gradient(to top, #d3959b, #bfe6ba)',
+  'linear-gradient(to top, #8360c3, #2ebf91)',
+  'linear-gradient(to top, #8360c3, #2ebf91)',
+]);
 </script>
 
 <style scoped>

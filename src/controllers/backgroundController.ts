@@ -9,7 +9,7 @@ class BackgroundController {
     'background-position': 'center',
   });
 
-  constructor(url: string = '/img/bg/bg1.webp') {
+  constructor(url: string = '/img/bg1.webp') {
     this.setBackgroundImg(url);
   }
 
@@ -36,5 +36,4 @@ class BackgroundController {
   }
 }
 
-const backgroundController = new BackgroundController();
-export default backgroundController;
+export default new BackgroundController();

@@ -11,6 +11,7 @@ import ElementPlus from 'element-plus';
 import App from '@/app.vue';
 import { routes } from '@/routes.js';
 import { createPinia } from 'pinia';
+import Particles from 'vue3-particles';
 
 import globalStore from './pinia.js';
 
@@ -30,12 +31,10 @@ app.config.globalProperties = {
 
 app.use(router)
   .use(ElementPlus)
+  .use(Particles)
   .use(createPinia());
 
 app.mount('#app');
 
 const store = globalStore();
 window.console.log(store);
-
-// globalThis.path = '/';
-window.console.log(window);

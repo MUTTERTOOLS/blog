@@ -47,19 +47,24 @@
   /></svg>
   </a>
 
-  <div
+  <teleport
     v-if="visible"
-    class="absolute h-0 w-0"
+    to="body"
   >
-    <span :class="[light ? 'light' : 'dark']">
-      <div
-        class="Cuteen_DarkSky"
-        style="width: 100vw;height: 100vh;"
-      >
-        <div :class="visible ? 'Cuteen_DarkPlanet' : ''" />
-      </div>
-    </span>
-  </div>
+    <div
+
+      class="absolute h-0 w-0"
+    >
+      <span :class="[light ? 'light' : 'dark']">
+        <div
+          class="Cuteen_DarkSky"
+          style="width: 100vw;height: 100vh;"
+        >
+          <div :class="visible ? 'Cuteen_DarkPlanet' : ''" />
+        </div>
+      </span>
+    </div>
+  </teleport>
 </template>
 
 <script setup>
@@ -72,7 +77,7 @@ watch(light, () => {
   visible.value = true;
   setTimeout(() => {
     visible.value = false;
-  }, 2e3);
+  }, 2100);
 });
 
 </script>
@@ -153,14 +158,8 @@ watch(light, () => {
 
 /* 深色模式按钮 */
 .icon-V {
-  /* position: relative;
-  top: 2rem;
-  left: 8rem; */
-  z-index: 9999;
-  width: 18px;
-  height: 18px;
-  overflow: hidden;
-  border-radius: 6px;
-  transition: 1.3s cubic-bezier(0.53, 0, 0.15, 1.3);
+  display: inline-block;
+  width: 30px;
+  height: 30px;
 }
 </style>

@@ -14,11 +14,13 @@
     "axios": "^1.4.0",
     "element-plus": "^2.3.5",
     "pinia": "^2.0.36",
+    "tsparticles": "^2.10.1",
     "vditor": "^3.9.3",
     "vue": "^3.2.47",
     "vue-kinesis": "^1.3.3",
     "vue-router": "^4.1.6",
-    "vue-winbox": "^0.2.3"
+    "vue-winbox": "^0.2.3",
+    "vue3-particles": "^2.10.1"
   },
   "devDependencies": {
     "@tailwindcss/line-clamp": "^0.4.4",

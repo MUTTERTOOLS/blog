@@ -219,3 +219,8 @@ li {
       opacity: 1
   }
 }
+
+#tsparticles {
+  position: relative;
+  z-index: -888;
+}
