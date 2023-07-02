@@ -12,7 +12,7 @@
             :for="i.name"
           >{{ i.name }}：<el-switch
             :id="i.name"
-            v-model="i.switch"
+            v-model="i.open"
             @change="i.changeFn"
           /></label>
         </div>
@@ -110,14 +110,8 @@ const linearGradient = ref([
 ]);
 
 // 动效切换
-const animationList = reactive(aniList.map((i) => ({
-  name: i.name,
-  changeFn(flag: boolean) {
-    // eslint-disable-next-line no-unused-expressions
-    flag && backgroundAniController.toggle(i.animation);
-  },
-  switch: false,
-})));
+// eslint-disable-next-line no-unused-expressions
+const animationList = reactive(aniList.map((i) => ({ ...i, changeFn(val: boolean) { val ? i.controller.load() : i.controller.unload(); } })));
 
 </script>
 
