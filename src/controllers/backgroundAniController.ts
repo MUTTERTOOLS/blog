@@ -3,6 +3,9 @@ declare const loadStarsPreset: Function;
 declare const loadFirePreset: Function;
 declare const loadFountainPreset: Function;
 declare const loadSnowPreset: Function;
+declare const Ribbons: ObjectConstructor;
+declare const startSakura: Function;
+declare const stopp: Function;
 
 interface BackgroundAnimation {
   play(): any;
@@ -87,6 +90,35 @@ const fountainAni = new ParticlesAnimation(async () => {
   });
 }, 'https://cdnjs.cloudflare.com/ajax/libs/tsparticles-preset-fountain/2.10.1/tsparticles.preset.fountain.bundle.min.js');
 
+const ribbonAni: BackgroundAnimation = {
+  play() {
+    const script = document.createElement('script');
+    script.src = '/js/ribbon.js';
+    script.onload = async () => {
+      this.ribbon = new Ribbons();
+    };
+    document.body.append(script);
+  },
+  stop() {
+    // eslint-disable-next-line no-underscore-dangle
+    (this.ribbon._canvas as HTMLCanvasElement).remove();
+  },
+};
+
+const sakuraAni: BackgroundAnimation = {
+  play() {
+    const script = document.createElement('script');
+    script.src = '/js/sakura.js';
+    script.onload = async () => {
+      startSakura();
+    };
+    document.body.append(script);
+  },
+  stop() {
+    stopp();
+  },
+};
+
 class BackgroundAniController {
   constructor(private ani: BackgroundAnimation) {}
 
@@ -108,8 +140,7 @@ class BackgroundAniController {
   }
 }
 
-export const backgroundAniController = new BackgroundAniController(starAni);
-export const aniList = [
+export default [
   {
     name: '星星', animation: starAni, controller: new BackgroundAniController(starAni), open: false,
   },
@@ -121,5 +152,11 @@ export const aniList = [
   },
   {
     name: '雪花', animation: snowAni, controller: new BackgroundAniController(snowAni), open: false,
+  },
+  {
+    name: '丝带', animation: ribbonAni, controller: new BackgroundAniController(ribbonAni), open: false,
+  },
+  {
+    name: '樱花', animation: sakuraAni, controller: new BackgroundAniController(sakuraAni), open: false,
   },
 ];

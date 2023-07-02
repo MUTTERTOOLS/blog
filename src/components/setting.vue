@@ -5,10 +5,11 @@
     >
       <div>
         <h3>动效切换⌛</h3>
-        <div class="flex w-full">
+        <div class="flex w-full flex-wrap">
           <label
             v-for="i in animationList"
             :key="i.name"
+            class="w-[120px]"
             :for="i.name"
           >{{ i.name }}：<el-switch
             :id="i.name"
@@ -78,11 +79,11 @@
 import winbox from '@/composables/winbox.vue';
 import { ref, reactive } from 'vue';
 import backgroundController from '@/controllers/backgroundController';
-import { aniList, backgroundAniController } from '@/controllers/backgroundAniController';
+import aniList from '@/controllers/backgroundAniController';
 
 const activeName = ref('1');
 
-// 自动批量导入背景图片路径
+// #region 自动批量导入背景图片路径
 const lightBgImgList = ref([]);
 const lightBgUrls = Object.values(
   import.meta.glob('../assets/img/darkBg/*', { as: 'url' }),
@@ -98,6 +99,8 @@ const darkBgUrls = Object.values(
 Promise.allSettled(darkBgUrls).then((urls) => {
   darkBgImgList.value = urls.map((url: any) => url.value);
 });
+
+// #endregion
 
 // 渐变色背景
 const linearGradient = ref([

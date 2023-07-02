@@ -151,9 +151,9 @@ function startSakura() {
 window.onresize = function () {
   const canvasSnow = document.getElementById('canvas_snow');
 };
-img.onload = function () {
-  startSakura();
-};
+// img.onload = function () {
+//   startSakura();
+// };
 
 function stopp() {
   if (staticx) {

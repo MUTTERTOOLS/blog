@@ -393,4 +393,4 @@
   // export
   return Factory;
 }));
-new Ribbons();
+// new Ribbons();
